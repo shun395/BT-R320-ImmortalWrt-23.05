@@ -1,0 +1,49 @@
+CONFIG_TARGET_mediatek=y
+CONFIG_TARGET_mediatek_filogic=y
+CONFIG_TARGET_mediatek_filogic_DEVICE_bt_r320=y
+
+# 基础系统
+CONFIG_PACKAGE_luci=y
+CONFIG_PACKAGE_luci-compat=y
+CONFIG_PACKAGE_luci-theme-bootstrap=y
+
+# 网络增强
+CONFIG_PACKAGE_odhcp6c=y
+CONFIG_PACKAGE_odhcpd-ipv6only=y
+CONFIG_PACKAGE_dnsmasq-full=y
+
+# SmartDNS
+CONFIG_PACKAGE_smartdns=y
+CONFIG_PACKAGE_luci-app-smartdns=y
+
+# AdGuardHome
+CONFIG_PACKAGE_adguardhome=y
+CONFIG_PACKAGE_luci-app-adguardhome=y
+
+# Zerotier
+CONFIG_PACKAGE_zerotier=y
+CONFIG_PACKAGE_luci-app-zerotier=y
+
+# Tailscale
+CONFIG_PACKAGE_tailscale=y
+CONFIG_PACKAGE_tailscaled=y
+
+# Docker
+CONFIG_PACKAGE_dockerd=y
+CONFIG_PACKAGE_luci-app-dockerman=y
+CONFIG_PACKAGE_kmod-veth=y
+CONFIG_PACKAGE_kmod-br-netfilter=y
+CONFIG_PACKAGE_kmod-nf-conntrack=y
+
+# Passwall 5.x
+CONFIG_PACKAGE_luci-app-passwall=y
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Xray=y
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Hysteria2=y
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_SingBox=y
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_ChinaDNS_NG=y
+
+# 常用工具
+CONFIG_PACKAGE_htop=y
+CONFIG_PACKAGE_curl=y
+CONFIG_PACKAGE_wget=y
+CONFIG_PACKAGE_vim=y
