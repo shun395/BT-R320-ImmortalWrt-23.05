@@ -1,0 +1,46 @@
+name: Build ImmortalWrt for BT R320
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Install Dependencies
+      run: |
+        sudo apt update
+        sudo apt install -y build-essential clang flex bison g++ gawk gcc-multilib \
+        gettext git libncurses5-dev libssl-dev python3-distutils rsync unzip zlib1g-dev
+
+    - name: Clone ImmortalWrt Source
+      run: |
+        git clone https://github.com/immortalwrt/immortalwrt.git
+        cd immortalwrt
+        git checkout openwrt-23.05
+
+    - name: Update Feeds
+      run: |
+        cd immortalwrt
+        ./scripts/feeds update -a
+        ./scripts/feeds install -a
+
+    - name: Copy Custom Config
+      run: |
+        cp config immortalwrt/.config
+
+    - name: Build
+      run: |
+        cd immortalwrt
+        make defconfig
+        make -j$(nproc) || make -j1 V=s
+
+    - name: Upload Firmware
+      uses: actions/upload-artifact@v3
+      with:
+        name: BT-R320-Firmware
+        path: immortalwrt/bin/targets/
